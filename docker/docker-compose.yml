@@ -1,0 +1,45 @@
+version: '3.8'
+
+services:
+  postgres:
+    image: postgres:15
+    environment:
+      POSTGRES_USER: coreprover
+      POSTGRES_PASSWORD: coreprover
+      POSTGRES_DB: coreprover
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+  redis:
+    image: redis:7-alpine
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis_data:/data
+
+  anvil:
+    image: ghcr.io/foundry-rs/foundry:latest
+    command: anvil --host 0.0.0.0 --port 8545
+    ports:
+      - "8545:8545"
+
+  coreprover-service:
+    build:
+      context: .
+      dockerfile: docker/Dockerfile.service
+    ports:
+      - "3000:3000"
+    environment:
+      DATABASE_URL: postgres://coreprover:coreprover@postgres:5432/coreprover
+      REDIS_URL: redis://redis:6379
+      RPC_URL: http://anvil:8545
+    depends_on:
+      - postgres
+      - redis
+      - anvil
+
+volumes:
+  postgres_data:
+  redis_data:

@@ -1,0 +1,9 @@
+[package]
+name = "simple-integration"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+coreprover-sdk = { path = "../../crates/coreprover-sdk" }
+tokio = { version = "1.35", features = ["full"] }
+anyhow = "1.0"
