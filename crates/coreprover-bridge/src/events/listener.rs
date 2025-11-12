@@ -1,22 +1,20 @@
-//! Event listener implementation
+// crates/coreprover-bridge/src/events/listener.rs
 
 use anyhow::Result;
 use ethers::prelude::*;
 
 /// Event listener for contract events
-pub struct EventListener {
-    // Event listener state
-}
+pub struct EventListener;
 
 impl EventListener {
     pub fn new() -> Self {
         Self {}
     }
-    
+
     /// Listen for BothCommitted events
     pub async fn on_both_committed<F>(&self, _callback: F) -> Result<()>
     where
-        F: Fn(BothCommittedEvent) + Send + ‘static,
+        F: Fn(BothCommittedEvent) + Send + 'static,
     {
         // Event listening placeholder
         Ok(())
