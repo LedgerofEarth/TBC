@@ -29,3 +29,4 @@ impl Default for GatewayStatus {
             version: crate::VERSION.to_string(),
         }
     }
+}
