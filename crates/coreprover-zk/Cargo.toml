@@ -10,9 +10,15 @@ tokio = { workspace = true }
 serde = { workspace = true }
 anyhow = { workspace = true }
 thiserror = { workspace = true }
+<<<<<<< HEAD
 ethers = { workspace = true }
 alloy-primitives = { workspace = true, features = ["serde"] }
 sha2.workspace = true
 
 [dev-dependencies]
 proptest = { workspace = true }
+=======
+
+[dev-dependencies]
+proptest = { workspace = true }
+>>>>>>> 91b50d73d4571279b7f8ff3180229bf2c1579c57

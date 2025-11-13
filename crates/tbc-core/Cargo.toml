@@ -13,6 +13,12 @@ serde_json = { workspace = true }
 anyhow = { workspace = true }
 thiserror = { workspace = true }
 tracing = { workspace = true }
+<<<<<<< HEAD
+=======
+serde = { version = "1.0", features = ["derive"] }
+thiserror = "1.0"
+log = "0.4"
+>>>>>>> 91b50d73d4571279b7f8ff3180229bf2c1579c57
 
 [dev-dependencies]
 proptest = { workspace = true }

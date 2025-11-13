@@ -1,6 +1,15 @@
 [workspace]
 resolver = "2"
+resolver = "2"
 members = [
+    "crates/tbc-core",
+    "crates/tbc-gateway",
+    "crates/coreprover-bridge",
+    "crates/coreprover-service",
+    "crates/coreprover-zk",
+    "crates/coreprover-cli",
+    "crates/coreprover-sdk",
+]
     "crates/tbc-core",
     "crates/tbc-gateway",
     "crates/coreprover-bridge",
@@ -11,6 +20,7 @@ members = [
 ]
 
 [workspace.package]
+version = "0.1.0"
 version = "0.1.0"
 edition = "2021"
 license = "MIT OR Apache-2.0"

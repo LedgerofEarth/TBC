@@ -28,5 +28,9 @@ impl Default for GatewayStatus {
             active_orders: 0,
             version: crate::VERSION.to_string(),
         }
+<<<<<<< HEAD
     }
 }
+=======
+ 
+>>>>>>> 91b50d73d4571279b7f8ff3180229bf2c1579c57
