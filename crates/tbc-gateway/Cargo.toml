@@ -3,7 +3,6 @@ name = "tbc-gateway"
 version.workspace = true
 edition.workspace = true
 license.workspace = true
-authors.workspace = true
 
 [dependencies]
 tbc-core = { path = "../tbc-core" }

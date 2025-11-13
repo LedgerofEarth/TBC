@@ -1,4 +1,4 @@
-//! High-level escrow client
+/// High-level escrow client
 
 use crate::types::receipt::Receipt;
 use crate::types::escrow::{Escrow, EscrowState, EscrowMode};
@@ -7,6 +7,7 @@ use ethers::prelude::*;
 use ethers::types::{Address, H256, U256};
 use std::sync::Arc;
 use chrono;
+
 
 /// Escrow client for interacting with CoreProverEscrow contract
 pub struct EscrowClient {
@@ -35,8 +36,7 @@ impl EscrowClient {
         Ok(Self::new(Arc::new(provider), contract_address, Address::zero()))
     }
     /// Simulate create escrow method
-        pub fn create_escrow(&self, seller: Address, amount: u6
-        ) -> Receipt {
+    
     let order_id = H256::zero().into();
     Receipt {
         receipt_id: H256::zero(),
@@ -48,7 +48,7 @@ impl EscrowClient {
         timestamp: chrono::Utc::now().timestamp() as u64,
         policy_hash: H256::zero(),
     }
-}
+  }
 
     /// Simulate creating an escrow receipt (purchase mode)
     pub fn create_purchase_receipt(&self, seller: Address, buyer_amount: u64) -> Receipt {
@@ -67,15 +67,15 @@ impl EscrowClient {
             timestamp,
             policy_hash,
         }
-    }
+     
 
-    /// Simulate creating a swap receipt
+    }
+/// Simulate creating a swap receipt
     pub fn create_swap_receipt(
         &self,
         seller: Address,
         buyer_amount: u64,
-        seller_amount: u64,
-    ) -> Receipt {
+        seller_amount: u64,) -> Receipt {
         let receipt_id = H256::random();
         let order_id = receipt_id.0;
         let timestamp = chrono::Utc::now().timestamp() as u64;
@@ -121,7 +121,8 @@ impl EscrowClient {
             self.provider, self.contract_address, self.buyer_address
         );
     }
-}//! High-level escrow client
+
+/// High-level escrow client
 
 use anyhow::Result;
 use ethers::prelude::*;
@@ -133,14 +134,26 @@ pub struct EscrowClient {
     contract_address: Address,
 }
 
+impl Default for Escrow {
+    fn default() -> Self {
+        Escrow {
+            field_a: Default::default(),
+            field_b: 0,
+            field_c: Address::zero(),
+            ...
+        }
+    }
+}
+
 impl EscrowClient {
     /// Create a new escrow client
-    pub fn new(rpc_url: &str, contract_address: Address) -> Result<Self> {
+    pub fn from_rpc(rpc_url: &str, contract_address: Address) -> Result<Self> {
         let provider = Provider::<Http>::try_from(rpc_url)?;
         
         Ok(Self {
             provider: Arc::new(provider),
             contract_address,
+            buyer_address,
         })
     }
     
