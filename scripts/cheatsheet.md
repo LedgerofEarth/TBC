@@ -65,6 +65,7 @@ cargo test -p <crate-name> —test <file_name> — —nocapture > output.txt 2>&
 ```bash
 cat output.txt
 ```
+cargo test --workspace --all-targets --all-features > test_output.txt 2>&1
 
 —
 
@@ -142,9 +143,7 @@ cargo clean && cargo build —workspace
 ### **Rerun only failed tests**
 ```bash
 cargo test — —failed
-```
-
-—
+cargo test -p coreprover-service --test pizza_sim -- --nocapture 2>&1 | tee test_output.txt
 
 ## 📦 Replaceable Placeholders
 
